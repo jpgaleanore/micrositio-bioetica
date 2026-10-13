@@ -1,6 +1,7 @@
 # Micrositio bioético: IA en el diagnóstico médico
 
-Micrositio web estático del proyecto integrador del curso de Bioética (fase 2).
+Micrositio web estático del proyecto integrador del curso de Ética y Axiología (fase 2).
+Autor: Juan Pablo Galeano Restrepo · Universidad Católica Luis Amigó.
 Dilema: **inteligencia artificial en el diagnóstico médico**.
 
 Sitio publicado: https://jpgaleanore.github.io/micrositio-bioetica/
@@ -18,16 +19,14 @@ Sitio publicado: https://jpgaleanore.github.io/micrositio-bioetica/
 
 Busca en `index.html` los comentarios `<!-- EDITAR -->` y los textos entre corchetes `[...]`:
 
-1. **Portada:** nombres de los integrantes, programa académico y universidad.
-2. **Sección 3 (entrevista):**
+1. **Sección 3 (entrevista):**
    - Nombre, profesión y presentación del entrevistado.
    - Justificación específica de su elección.
    - Reemplaza `VIDEO_ID` por el ID de tu video de YouTube (dos lugares: el `iframe` y la referencia APA).
    - Los seis "aportes" de la entrevista.
    - Ajusta las preguntas si cambiaste la batería del foro.
-3. **Sección 4 (deliberación):** sube tu podcast como `media/podcast.mp3` o reemplaza el reproductor por el código de inserción de Spotify/YouTube.
-4. **Sección 6 (referencias):** completa la referencia APA de la entrevista.
-5. **Pie de página:** programa y universidad.
+2. **Sección 4 (deliberación):** sube tu podcast como `media/podcast.mp3` o reemplaza el reproductor por el código de inserción de Spotify/YouTube.
+3. **Sección 6 (referencias):** completa la referencia APA de la entrevista.
 
 ## Cómo publicar cambios
 
