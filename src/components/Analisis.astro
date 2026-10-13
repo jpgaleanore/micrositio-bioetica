@@ -1,0 +1,112 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { valoresEnConflicto, teoriasEticas } from '../data/site';
+---
+
+<section id="analisis" class="section alt">
+  <div class="container">
+    <SectionHeading
+      numero={2}
+      titulo="Análisis interdisciplinario"
+      lead="Una investigación que permite comprender el dilema desde la ética y desde las disciplinas que lo atraviesan: medicina, ingeniería, derecho y psicología."
+    />
+
+    <h3 class="subhead"><span>A</span> Perspectiva ética</h3>
+
+    <h4>Valores en conflicto</h4>
+    <div class="versus">
+      {valoresEnConflicto.map(([a, b]) => (
+        <div class="vs-item"><strong>{a}</strong><span>vs.</span><strong>{b}</strong></div>
+      ))}
+    </div>
+
+    <h4 class="mt">Principios bioéticos (Beauchamp y Childress, 2019)</h4>
+    <div class="principles">
+      <article class="principle">
+        <div class="p-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 42s-16-9-16-21a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 12-16 21-16 21z" fill="none" stroke="currentColor" stroke-width="3"></path></svg>
+        </div>
+        <h5>Beneficencia</h5>
+        <p>La IA promete detectar enfermedades antes y con mayor precisión. Pero el beneficio debe demostrarse en resultados clínicos reales, no solo en métricas de exactitud (Topol, 2019).</p>
+      </article>
+      <article class="principle">
+        <div class="p-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 6l16 6v12c0 10-7 16-16 20C15 40 8 34 8 24V12z" fill="none" stroke="currentColor" stroke-width="3"></path><path d="M16 24l6 6 10-12" fill="none" stroke="currentColor" stroke-width="3"></path></svg>
+        </div>
+        <h5>No maleficencia</h5>
+        <p>Un falso negativo retrasa el tratamiento; un falso positivo genera ansiedad y procedimientos innecesarios. La "automatización del sesgo" lleva al profesional a aceptar recomendaciones erróneas (Goddard et al., 2012).</p>
+      </article>
+      <article class="principle">
+        <div class="p-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="3"></circle><path d="M8 42c2-10 10-14 16-14s14 4 16 14" fill="none" stroke="currentColor" stroke-width="3"></path></svg>
+        </div>
+        <h5>Autonomía</h5>
+        <p>El paciente tiene derecho a saber que una IA participa en su diagnóstico, a comprender sus límites y a rechazar su uso. Sin explicabilidad no hay consentimiento informado genuino.</p>
+      </article>
+      <article class="principle">
+        <div class="p-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 8v32M10 16h28M10 16l-6 12h12zM38 16l-6 12h12z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"></path></svg>
+        </div>
+        <h5>Justicia</h5>
+        <p>Algoritmos entrenados con datos de poblaciones mayoritarias pueden funcionar peor en minorías étnicas o zonas rurales, reproduciendo desigualdades estructurales (Obermeyer et al., 2019).</p>
+      </article>
+    </div>
+
+    <h4 class="mt">Teorías éticas relacionadas</h4>
+    <div class="grid-3">
+      {teoriasEticas.map((t) => (
+        <article class="card small">
+          <h5>{t.nombre}</h5>
+          <p>{t.texto}</p>
+        </article>
+      ))}
+    </div>
+
+    <h4 class="mt">Tensiones morales</h4>
+    <ul class="tensions">
+      <li><strong>Responsabilidad difusa.</strong> Cuando el error es compartido entre médico, hospital y fabricante, el riesgo es que nadie responda ante el paciente (Gerke et al., 2020).</li>
+      <li><strong>Opacidad vs. confianza.</strong> ¿Es ético usar una herramienta cuyas razones no podemos explicar, aunque funcione mejor que nosotros? (Char et al., 2018).</li>
+      <li><strong>Desprofesionalización.</strong> Si los médicos dejan de practicar la lectura de imágenes, ¿quién detectará cuando el algoritmo falle?</li>
+      <li><strong>Datos como bien común o mercancía.</strong> Los historiales clínicos de miles de pacientes entrenan sistemas privados que luego se venden a los mismos hospitales.</li>
+    </ul>
+
+    <h3 class="subhead mt-xl"><span>B</span> Perspectiva disciplinar</h3>
+    <div class="accordion" data-accordion>
+      <details open>
+        <summary>Medicina: evidencia clínica y límites</summary>
+        <div class="details-body">
+          <p>Esteva et al. (2017) entrenaron una red neuronal con 129 450 imágenes clínicas y lograron un desempeño comparable al de 21 dermatólogos en la clasificación de cáncer de piel. McKinney et al. (2020) reportaron que un sistema de IA redujo los falsos positivos y los falsos negativos en tamizaje de cáncer de mama en Reino Unido y Estados Unidos. Sin embargo, Topol (2019) señala que casi ninguno de estos sistemas ha sido evaluado en ensayos clínicos aleatorizados y que la mayoría de los estudios son retrospectivos.</p>
+          <p>Desde la práctica clínica, la IA se concibe como un "segundo lector" o sistema de apoyo a la decisión, nunca como diagnosticador autónomo. La Ley 23 de 1981 (art. 10) obliga al médico a dedicar al paciente el tiempo necesario para hacer una evaluación adecuada, lo que implica que la responsabilidad del diagnóstico sigue siendo personal e indelegable.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Ingeniería y ciencia de datos: sesgos, opacidad y validación</summary>
+        <div class="details-body">
+          <p>Un modelo solo es tan bueno como sus datos. Obermeyer et al. (2019) demostraron que un algoritmo usado con millones de pacientes en Estados Unidos asignaba menos recursos a pacientes afroamericanos porque usaba el "gasto en salud" como indicador de necesidad, y ese gasto era históricamente menor por barreras de acceso. El sesgo no estaba en el código, sino en la variable elegida.</p>
+          <p>Buenas prácticas de ingeniería responsable: validación externa en la población de destino, reporte de desempeño por subgrupos (sexo, edad, etnia, tipo de equipo), monitoreo continuo tras el despliegue, trazabilidad de versiones y técnicas de explicabilidad (mapas de calor, atribución de características) que permitan al clínico contrastar la salida del modelo con su propio criterio.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Derecho: marco normativo colombiano e internacional</summary>
+        <div class="details-body">
+          <ul>
+            <li><strong>Ley 23 de 1981.</strong> Normas de ética médica: responsabilidad del profesional, secreto profesional y consentimiento.</li>
+            <li><strong>Ley 1581 de 2012.</strong> Los datos de salud son <em>datos sensibles</em>; su tratamiento exige autorización explícita y finalidad legítima. Entrenar modelos con historias clínicas sin autorización vulnera la ley.</li>
+            <li><strong>Ley 1751 de 2015.</strong> La salud es un derecho fundamental; el Estado debe garantizar accesibilidad, calidad y no discriminación, principios aplicables a cualquier tecnología sanitaria.</li>
+            <li><strong>Resolución 2654 de 2019.</strong> Regula la telesalud y la telemedicina, primer marco en el que operan muchos sistemas de diagnóstico asistido.</li>
+            <li><strong>CONPES 3975 de 2019.</strong> Política nacional de transformación digital e IA: promueve la adopción, pero reconoce la necesidad de un marco ético.</li>
+            <li><strong>Reglamento (UE) 2024/1689.</strong> La Ley de IA europea clasifica los dispositivos médicos con IA como de alto riesgo: exige gestión de riesgos, calidad de datos, supervisión humana, transparencia y registro.</li>
+            <li><strong>OMS (2021) y UNESCO (2021).</strong> Guías internacionales que establecen principios de autonomía humana, bienestar, transparencia, responsabilidad, inclusión y sostenibilidad.</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Psicología y comunicación: confianza y sesgo de automatización</summary>
+        <div class="details-body">
+          <p>Goddard et al. (2012) documentan el <em>sesgo de automatización</em>: la tendencia a aceptar la recomendación de un sistema automatizado incluso cuando contradice la evidencia disponible. Este fenómeno se agrava con la fatiga, la presión de tiempo y la percepción de que "la máquina es más objetiva".</p>
+          <p>Desde la comunicación en salud, informar al paciente que "una IA revisó su examen" puede aumentar la confianza o generar rechazo, dependiendo de cómo se explique. La forma en que se comunica el papel de la tecnología hace parte del consentimiento informado y de la relación terapéutica.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>

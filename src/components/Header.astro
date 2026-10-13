@@ -1,0 +1,36 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const enlaces = [
+  { href: '#presentacion', texto: '1. Dilema' },
+  { href: '#analisis', texto: '2. Análisis' },
+  { href: '#entrevista', texto: '3. Entrevista' },
+  { href: '#deliberacion', texto: '4. Deliberación' },
+  { href: '#conclusiones', texto: '5. Conclusiones' },
+  { href: '#referencias', texto: '6. Referencias' },
+];
+---
+
+<header class="site-header">
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="#portada" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Micrositio bioético</span>
+    </a>
+    <div class="nav-right">
+      <ThemeToggle />
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-expanded="false"
+        aria-controls="navLinks"
+        aria-label="Abrir menú"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      {enlaces.map((e) => <li><a href={e.href}>{e.texto}</a></li>)}
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,66 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { actores } from '../data/site';
+
+const contextos = [
+  { id: 'social', nombre: 'Social', texto: 'Colombia tiene una distribución muy desigual de especialistas: la mayoría se concentra en grandes ciudades, mientras amplias zonas rurales dependen de médicos generales y de la telemedicina. La IA diagnóstica aparece como una herramienta para cerrar esa brecha, pero también puede ampliarla si los sistemas se entrenan con datos de poblaciones distintas a las que atenderán (Obermeyer et al., 2019). A esto se suma una relación médico-paciente ya tensionada por tiempos de consulta cortos y una creciente desconfianza en el sistema de salud.' },
+  { id: 'cientifico', nombre: 'Científico', texto: 'La evidencia muestra resultados sobresalientes en condiciones controladas (Esteva et al., 2017; McKinney et al., 2020), pero muchos estudios carecen de validación externa, de ensayos clínicos prospectivos y de reporte de desempeño por subgrupos de población. Topol (2019) advierte que el rendimiento de un modelo "en el laboratorio" no equivale a beneficio clínico demostrado "en la cama del paciente".' },
+  { id: 'tecnologico', nombre: 'Tecnológico', texto: 'Los modelos de aprendizaje profundo aprenden correlaciones estadísticas a partir de millones de ejemplos. Sus decisiones no siempre pueden explicarse en términos clínicos comprensibles (opacidad algorítmica), su desempeño se degrada cuando cambian los equipos o los protocolos de adquisición de imágenes (deriva de datos) y requieren infraestructura, conectividad y mantenimiento continuo que no todas las instituciones pueden garantizar.' },
+  { id: 'juridico', nombre: 'Jurídico', texto: 'En Colombia no existe aún una ley específica sobre IA en salud. El marco aplicable se compone de la Ley 23 de 1981 (ética médica), la Ley 1581 de 2012 (protección de datos personales, que clasifica los datos de salud como sensibles), la Ley 1751 de 2015 (derecho fundamental a la salud), la Resolución 2654 de 2019 (telesalud) y los lineamientos del documento CONPES 3975 de 2019. Como referencia internacional, la Ley de IA de la Unión Europea (Reglamento 2024/1689) clasifica los sistemas de IA sanitarios como de "alto riesgo", y la OMS (2021) y la UNESCO (2021) han publicado guías éticas específicas.' },
+];
+---
+
+<section id="presentacion" class="section">
+  <div class="container">
+    <SectionHeading
+      numero={1}
+      titulo="Presentación del dilema"
+      lead="Esta sección permite comprender el conflicto antes de iniciar el análisis: de dónde surge, en qué consiste, quiénes participan y por qué importa."
+    />
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Contextualización</h3>
+        <p>En la última década, los sistemas de inteligencia artificial (IA) basados en aprendizaje profundo han alcanzado un desempeño comparable al de especialistas humanos en tareas de diagnóstico por imagen, como la clasificación de lesiones cutáneas (Esteva et al., 2017) o la lectura de mamografías (McKinney et al., 2020). La promesa es clara: diagnósticos más rápidos, más baratos y disponibles en lugares donde escasean los especialistas.</p>
+        <p>Sin embargo, estos sistemas aprenden de datos históricos que reflejan desigualdades existentes, funcionan como "cajas negras" difíciles de auditar y desplazan parte del juicio clínico hacia un artefacto técnico diseñado por empresas privadas (Topol, 2019; Morley et al., 2020).</p>
+      </article>
+      <article class="card">
+        <h3>Descripción del problema</h3>
+        <p><strong>Caso ilustrativo.</strong> Un hospital de mediana complejidad incorpora un sistema de IA para apoyar la lectura de radiografías de tórax. En un turno nocturno, el sistema marca como "normal" la imagen de una paciente de 58 años; el médico de urgencias, con alta carga de trabajo, confía en la lectura y la da de alta. Tres semanas después se confirma un carcinoma que ya era visible en la imagen original.</p>
+        <p>El dilema no es solo "¿funcionó mal la máquina?", sino: <em>¿hasta dónde puede un profesional delegar su juicio en un algoritmo? ¿Quién es responsable del error? ¿Fue informada la paciente de que una IA participaba en su diagnóstico? ¿Cómo se garantiza que el sistema funcione igual de bien para todas las poblaciones?</em></p>
+      </article>
+    </div>
+
+    <h3 class="mt">Actores involucrados</h3>
+    <div class="actors">
+      {actores.map((a) => (
+        <div class="actor">
+          <span class="actor-icon" aria-hidden="true">{a.icono}</span>
+          <h4>{a.nombre}</h4>
+          <p>{a.texto}</p>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="mt">Contexto del dilema</h3>
+    <div class="tabs" data-tabs>
+      <div class="tab-list" role="tablist">
+        {contextos.map((c, i) => (
+          <button role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`ctx-${c.id}`} id={`tab-${c.id}`}>
+            {c.nombre}
+          </button>
+        ))}
+      </div>
+      {contextos.map((c, i) => (
+        <div class="tab-panel" role="tabpanel" id={`ctx-${c.id}`} aria-labelledby={`tab-${c.id}`} hidden={i !== 0}>
+          <p>{c.texto}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="callout">
+      <h3>¿Por qué importa este tema?</h3>
+      <p>Porque la decisión diagnóstica es el punto de partida de todo el acto médico: un error en ese momento se propaga al tratamiento, al pronóstico y a la vida de la persona. Porque la IA ya está siendo adoptada en hospitales colombianos sin que exista un debate público amplio sobre sus condiciones de uso. Y porque, como ciudadanos y futuros profesionales, nos corresponde decidir qué tipo de medicina queremos: una en la que la tecnología amplifique el cuidado humano o una en la que lo reemplace silenciosamente.</p>
+    </div>
+  </div>
+</section>

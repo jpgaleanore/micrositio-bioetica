@@ -1,0 +1,56 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="portada" class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Proyecto integrador · {site.curso} · {site.fase}</p>
+    <h1>{site.titulo}</h1>
+    <p class="hero-sub">{site.subtitulo}</p>
+
+    <div class="hero-meta">
+      <div class="meta-card">
+        <h2>{site.integrantes.length > 1 ? 'Integrantes' : 'Integrante'}</h2>
+        <ul>
+          {site.integrantes.map((nombre) => <li>{nombre}</li>)}
+        </ul>
+      </div>
+      <div class="meta-card">
+        <h2>Programa académico</h2>
+        <p>{site.programa}</p>
+        <p>{site.universidad}</p>
+        <p class="muted">Curso de {site.curso} · {site.anio}</p>
+      </div>
+    </div>
+
+    <div class="hero-illustration" aria-hidden="true">
+      <svg viewBox="0 0 520 260" role="img">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0" stop-color="#0f5f6b"></stop>
+            <stop offset="1" stop-color="#2aa198"></stop>
+          </linearGradient>
+        </defs>
+        <g stroke="#9ad1cc" stroke-width="1.5" opacity=".8">
+          <line x1="60" y1="60" x2="180" y2="40"></line><line x1="60" y1="60" x2="180" y2="130"></line><line x1="60" y1="60" x2="180" y2="220"></line>
+          <line x1="60" y1="130" x2="180" y2="40"></line><line x1="60" y1="130" x2="180" y2="130"></line><line x1="60" y1="130" x2="180" y2="220"></line>
+          <line x1="60" y1="200" x2="180" y2="40"></line><line x1="60" y1="200" x2="180" y2="130"></line><line x1="60" y1="200" x2="180" y2="220"></line>
+          <line x1="180" y1="40" x2="300" y2="90"></line><line x1="180" y1="130" x2="300" y2="90"></line><line x1="180" y1="220" x2="300" y2="90"></line>
+          <line x1="180" y1="40" x2="300" y2="170"></line><line x1="180" y1="130" x2="300" y2="170"></line><line x1="180" y1="220" x2="300" y2="170"></line>
+        </g>
+        <g fill="url(#g1)">
+          <circle cx="60" cy="60" r="12"></circle><circle cx="60" cy="130" r="12"></circle><circle cx="60" cy="200" r="12"></circle>
+          <circle cx="180" cy="40" r="12"></circle><circle cx="180" cy="130" r="12"></circle><circle cx="180" cy="220" r="12"></circle>
+          <circle cx="300" cy="90" r="12"></circle><circle cx="300" cy="170" r="12"></circle>
+        </g>
+        <path d="M320 130 H380" stroke="#0f5f6b" stroke-width="3" stroke-dasharray="6 6" fill="none"></path>
+        <circle cx="440" cy="80" r="26" fill="#f4e9d8" stroke="#0f5f6b" stroke-width="3"></circle>
+        <path d="M400 210 C400 150 480 150 480 210 Z" fill="#f4e9d8" stroke="#0f5f6b" stroke-width="3"></path>
+        <path d="M425 140 c0 30 30 30 30 0" fill="none" stroke="#0f5f6b" stroke-width="3" stroke-linecap="round"></path>
+        <circle cx="455" cy="140" r="6" fill="#d9822b"></circle>
+      </svg>
+    </div>
+
+    <a href="#presentacion" class="btn">Explorar el dilema</a>
+  </div>
+</section>

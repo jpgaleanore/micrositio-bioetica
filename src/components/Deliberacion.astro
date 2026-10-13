@@ -1,0 +1,93 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import PrinciplesDiagram from './PrinciplesDiagram.astro';
+import { podcast } from '../data/site';
+import { withBase } from '../lib/paths';
+
+const podcastSrc = withBase(podcast.archivo);
+
+const posiciones = [
+  { nombre: 'Tecno-optimista', texto: 'La IA supera al humano en precisión; retrasar su adopción es, en sí mismo, una forma de maleficencia porque priva a los pacientes de un mejor diagnóstico.' },
+  { nombre: 'Precautoria', texto: 'Mientras no haya ensayos clínicos, explicabilidad y regulación específica, la IA no debería intervenir en decisiones diagnósticas; el riesgo de daño invisible es demasiado alto.' },
+  { nombre: 'Integradora (supervisión humana significativa)', texto: 'La IA puede y debe usarse, pero como apoyo al profesional, con validación local, transparencia hacia el paciente y responsabilidades claramente asignadas.', destacada: true },
+];
+---
+
+<section id="deliberacion" class="section alt">
+  <div class="container">
+    <SectionHeading
+      numero={4}
+      titulo="Deliberación ética"
+      lead="A partir de la información recopilada, identificamos los conflictos, analizamos las posiciones, relacionamos los principios y argumentamos una postura sustentada."
+    />
+
+    <h3>Recurso multimedia de la deliberación</h3>
+    <p class="muted">Presentamos esta sección mediante un <strong>podcast</strong> y una <strong>infografía narrada</strong>.</p>
+    <div class="media-row">
+      <div class="podcast">
+        <h4>🎙️ Podcast: "{podcast.titulo}"</h4>
+        <audio controls preload="none" src={podcastSrc}>Tu navegador no soporta audio HTML5.</audio>
+        <p class="muted">[Si el podcast está en Spotify, SoundCloud o YouTube, reemplaza el reproductor por el código de inserción correspondiente.]</p>
+      </div>
+    </div>
+
+    <h3 class="mt">Infografía narrada: ruta de la deliberación</h3>
+    <div class="infographic">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Principales conflictos éticos</h4>
+          <ul>
+            <li><strong>Delegación del juicio clínico:</strong> ¿cuánto puede confiar el médico en la máquina sin incumplir su deber de diligencia?</li>
+            <li><strong>Consentimiento informado incompleto:</strong> los pacientes rara vez saben que una IA participa en su atención.</li>
+            <li><strong>Responsabilidad fragmentada:</strong> médico, hospital y fabricante se señalan mutuamente ante un error.</li>
+            <li><strong>Injusticia algorítmica:</strong> el desempeño no es uniforme entre poblaciones.</li>
+            <li><strong>Uso de datos sensibles:</strong> historias clínicas convertidas en insumo comercial.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Posiciones existentes</h4>
+          <div class="positions">
+            {posiciones.map((p) => (
+              <div class:list={['position', { highlight: p.destacada }]}>
+                <h5>{p.nombre}</h5>
+                <p>{p.texto}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Relaciones entre los principios bioéticos</h4>
+          <PrinciplesDiagram />
+          <p>Los cuatro principios no se aplican de forma aislada. La <strong>beneficencia</strong> que promete la IA solo es legítima si se acompaña de <strong>no maleficencia</strong> demostrada en ensayos y monitoreo. La <strong>justicia</strong> exige que ese beneficio alcance a todas las poblaciones, lo que a su vez condiciona qué datos se usan y cómo se valida el sistema. Y la <strong>autonomía</strong> del paciente solo puede ejercerse si conoce los riesgos y límites de la herramienta. El punto de equilibrio es la <strong>supervisión humana significativa</strong>: el profesional conserva la decisión final y la responsabilidad.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Nuestra postura argumentada</h4>
+          <div class="stance">
+            <p class="stance-title">La IA diagnóstica es éticamente admisible solo como herramienta de apoyo bajo supervisión humana significativa, con validación local, transparencia hacia el paciente y responsabilidad claramente asignada.</p>
+            <ol>
+              <li><strong>Argumento de beneficencia condicionada.</strong> La evidencia (Esteva et al., 2017; McKinney et al., 2020) muestra beneficios potenciales reales. Rechazar la tecnología por principio sería privar a los pacientes de ellos; pero adoptarla sin validación prospectiva en la población de destino convierte la promesa en una apuesta (Topol, 2019).</li>
+              <li><strong>Argumento de no maleficencia.</strong> El sesgo de automatización (Goddard et al., 2012) y los sesgos de datos (Obermeyer et al., 2019) son daños documentados. La única barrera eficaz es un profesional competente que mantenga su criterio y pueda contradecir al sistema, lo que exige formación continua y tiempos de consulta adecuados.</li>
+              <li><strong>Argumento de autonomía.</strong> Desde Kant y desde la Ley 23 de 1981, el paciente debe ser informado de que una IA participa en su diagnóstico, de su margen de error y de su derecho a solicitar una segunda lectura humana. Sin esto, el consentimiento es ficticio.</li>
+              <li><strong>Argumento de justicia.</strong> La Ley 1751 de 2015 prohíbe la discriminación en el acceso a la salud. Un sistema que funciona peor en poblaciones rurales, afrodescendientes o indígenas vulnera ese mandato. Por ello exigimos reporte de desempeño por subgrupos y validación con datos colombianos.</li>
+              <li><strong>Argumento de responsabilidad.</strong> Siguiendo a Jonas (1995) y a Gerke et al. (2020), la responsabilidad no puede diluirse: el médico responde por la decisión clínica, la institución por la implementación y supervisión, y el fabricante por el desempeño declarado del producto. La regulación debe hacer explícita esta cadena, como lo hace la Ley de IA europea (Reglamento 2024/1689).</li>
+            </ol>
+            <p>Esta postura integradora reconoce lo valioso de las posiciones tecno-optimista (el beneficio potencial) y precautoria (el riesgo de daño invisible), pero rechaza sus extremos: ni adopción acrítica ni prohibición. El criterio es que la tecnología amplifique el cuidado humano, no que lo sustituya.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

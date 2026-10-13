@@ -1,0 +1,59 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { entrevista } from '../data/site';
+---
+
+<section id="entrevista" class="section">
+  <div class="container">
+    <SectionHeading
+      numero={3}
+      titulo="La voz de la experiencia"
+      lead="Entrevista a un profesional cuya experiencia resulta pertinente para comprender el dilema desde la práctica."
+    />
+
+    <div class="grid-2">
+      <article class="card interviewee">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="46" class="avatar-bg"></circle><circle cx="48" cy="38" r="16" fill="#0f5f6b"></circle><path d="M16 84c4-20 18-28 32-28s28 8 32 28" fill="#0f5f6b"></path></svg>
+        </div>
+        <h3>{entrevista.nombre}</h3>
+        <p class="role">{entrevista.cargo}</p>
+        <h4>Breve presentación</h4>
+        <p>{entrevista.presentacion}</p>
+      </article>
+      <article class="card">
+        <h3>Justificación de su elección</h3>
+        <p>Elegimos a un profesional del área de la salud con experiencia en diagnóstico porque es quien enfrenta en la práctica la tensión entre el juicio clínico y la recomendación algorítmica. Su perspectiva permite contrastar la literatura académica con la realidad de los hospitales colombianos: la disponibilidad de tecnología, la formación del personal, la relación con los pacientes y la forma en que se asume la responsabilidad ante un error.</p>
+        <p>{entrevista.justificacionExtra}</p>
+      </article>
+    </div>
+
+    <h3 class="mt">Video de la entrevista</h3>
+    <p class="muted">Duración: 3 a 5 minutos. El entrevistado aparece en el video junto al entrevistador.</p>
+    <div class="video-wrap">
+      <iframe
+        src={`https://www.youtube.com/embed/${entrevista.youtubeId}`}
+        title="Entrevista: inteligencia artificial en el diagnóstico médico"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </div>
+
+    <h3 class="mt">Preguntas más significativas de la batería construida en el foro</h3>
+    <ol class="questions">
+      {entrevista.preguntas.map((p) => <li>{p}</li>)}
+    </ol>
+
+    <h3 class="mt">Principales aportes de la entrevista</h3>
+    <div class="grid-3">
+      {entrevista.aportes.map((a, i) => (
+        <div class="insight">
+          <span class="insight-num">{String(i + 1).padStart(2, '0')}</span>
+          <p>{a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { referencias, entrevista } from '../data/site';
+
+const videoUrl = `https://www.youtube.com/watch?v=${entrevista.youtubeId}`;
+---
+
+<section id="referencias" class="section alt">
+  <div class="container">
+    <SectionHeading
+      numero={6}
+      titulo="Referencias"
+      lead="Fuentes consultadas, presentadas en normas APA (7.ª edición)."
+    />
+
+    {referencias.map((grupo, i) => (
+      <>
+        <h3 class={i > 0 ? 'mt' : ''}>{grupo.grupo}</h3>
+        <ul class="references">
+          {grupo.items.map((r) => (
+            <li>
+              <Fragment set:html={r.html} />
+              {r.url && (
+                <>
+                  {' '}
+                  <a href={r.url} target="_blank" rel="noopener">{r.url}</a>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      </>
+    ))}
+
+    <h3 class="mt">Entrevista</h3>
+    <ul class="references">
+      <li>
+        {entrevista.apellidoInicial}. ({entrevista.fechaApa}). <em>Entrevista sobre inteligencia artificial en el diagnóstico médico</em> [Video]. Entrevista realizada por {entrevista.entrevistador}. YouTube. <a href={videoUrl} target="_blank" rel="noopener">{videoUrl}</a>
+      </li>
+    </ul>
+
+    <p class="muted mt">Las imágenes y diagramas de este micrositio son ilustraciones vectoriales de elaboración propia con fines académicos.</p>
+  </div>
+</section>
