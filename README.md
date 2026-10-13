@@ -12,7 +12,7 @@ Sitio publicado: https://jpgaleanore.github.io/micrositio-bioetica/
 |---|---|
 | `index.html` | Todo el contenido (portada y 6 secciones) |
 | `styles.css` | Estilos y diseño responsivo |
-| `script.js` | Menú móvil, pestañas, barra de progreso, animaciones |
+| `script.js` | Tema claro/oscuro, menú móvil, pestañas, barra de progreso, animaciones |
 | `media/` | Carpeta para el audio del podcast |
 
 ## Qué debes editar antes de entregar

@@ -1,4 +1,12 @@
 (function () {
+  // Tema claro / oscuro
+  var themeBtn = document.getElementById('themeToggle');
+  themeBtn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) { /* almacenamiento no disponible */ }
+  });
+
   // Menú móvil
   var toggle = document.getElementById('navToggle');
   var links = document.getElementById('navLinks');

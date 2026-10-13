@@ -9,6 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+    })();
+  </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230f5f6b'/%3E%3Cpath d='M32 14v36M14 32h36' stroke='%23fff' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -20,9 +29,16 @@
         <span class="brand-mark" aria-hidden="true"></span>
         <span>Micrositio bioético</span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar entre tema claro y oscuro">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <span class="label-light">Claro</span><span class="label-dark">Oscuro</span>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#presentacion">1. Dilema</a></li>
         <li><a href="#analisis">2. Análisis</a></li>
@@ -287,7 +303,7 @@
         <div class="grid-2">
           <article class="card interviewee">
             <div class="avatar" aria-hidden="true">
-              <svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="46" fill="#e3f1f0"/><circle cx="48" cy="38" r="16" fill="#0f5f6b"/><path d="M16 84c4-20 18-28 32-28s28 8 32 28" fill="#0f5f6b"/></svg>
+              <svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="46" class="avatar-bg"/><circle cx="48" cy="38" r="16" fill="#0f5f6b"/><path d="M16 84c4-20 18-28 32-28s28 8 32 28" fill="#0f5f6b"/></svg>
             </div>
             <!-- EDITAR: datos del entrevistado -->
             <h3>[Nombre del entrevistado]</h3>
@@ -434,7 +450,7 @@
                     <text x="450" y="276" text-anchor="middle" fill="#fff" class="svg-node">Autonomía</text>
                   </g>
                   <!-- centro -->
-                  <circle cx="300" cy="180" r="42" fill="#fff" stroke="#d9822b" stroke-width="3"/>
+                  <circle cx="300" cy="180" r="42" class="svg-center-bg" stroke="#d9822b" stroke-width="3"/>
                   <text x="300" y="176" text-anchor="middle" class="svg-center">Supervisión</text>
                   <text x="300" y="194" text-anchor="middle" class="svg-center">humana</text>
                 </svg>
